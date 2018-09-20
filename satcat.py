@@ -5,6 +5,7 @@
    Originally built for Kenwood TH-D7 but readily modifiable for others.
 
    Only dependency outside of standard Python 2.7 is appJar: http://appjar.info/
+   Version: 1.01 - Fixed excessive radio updates
    Version: 1.0
 
    Copyright (c) 2018 Jeff Karpinski
@@ -171,7 +172,7 @@ def launch():    #main process thread
             tone = response[indx_tone_beg:indx_tone_end]
             ctone = response[indx_ctone_beg:indx_ctone_end]
             sname = response[indx_sname_beg:indx_sname_end]
-            newdata = ufreq+dfreq+tone+ctone
+            newdata = '{:08}'.format(ufreqr)+'{:08}'.format(dfreqr)+tone+ctone
 
             if newdata != lastdata:
                 app.queueFunction(app.setLabel,"stat","Radio")
